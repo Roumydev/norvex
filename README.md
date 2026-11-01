@@ -5,7 +5,7 @@ A bilingual (English / Arabic, RTL-ready) web platform for Algerian real estate 
 > Full-stack project: **Next.js + NestJS + MongoDB**, built end to end (UI, REST API, data model, auth and role-based data scoping).
 
 <!-- Replace the paths below with your own screenshots (docs/screenshots/) -->
-![Dashboard](docs/screenshots/01-dashboard.png)
+![Dashboard](docs/screenshots/01-dashboard.jpg)
 
 ## Features
 
@@ -131,10 +131,10 @@ Demo accounts (password for all: `Demo@12345`):
 
 | | |
 |---|---|
-| ![Properties](docs/screenshots/02-properties.png) | ![Property](docs/screenshots/03-property.png) |
-| ![Leads](docs/screenshots/04-leads.png) | ![Visits](docs/screenshots/05-visits.png) |
-| ![Contracts](docs/screenshots/06-contract.png) | ![Analytics](docs/screenshots/07-analytics.png) |
-| ![Arabic](docs/screenshots/08-arabic.png) | ![Agent view](docs/screenshots/09-agent.png) |
+| ![Properties](docs/screenshots/02-properties.jpg) | ![Property](docs/screenshots/03-property-details.jpg) |
+| ![Leads](docs/screenshots/04-leads.jpg) | ![Visits](docs/screenshots/07-visits.jpg) |
+| ![Contracts](docs/screenshots/05-contracts.jpg) | ![Analytics](docs/screenshots/06-analytics.jpg) |
+| ![Arabic](docs/screenshots/08-arabic-rtl.jpg) | ![Agent view](docs/screenshots/09-agent.jpg) |
 
 ## Known limitations and next steps
 
@@ -146,4 +146,4 @@ Demo accounts (password for all: `Demo@12345`):
 
 ## License
 
-MIT (or your choice).
+MIT. See [LICENSE](LICENSE).
