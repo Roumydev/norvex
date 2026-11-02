@@ -6,8 +6,15 @@ import { AllExceptionsFilter } from './common/all-exceptions.filter';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:8081',
+    'https://norvex-sigma.vercel.app',
+    process.env.FRONTEND_URL,
+  ].filter(Boolean) as string[];
+
   app.enableCors({
-    origin: ['http://localhost:3000', 'http://localhost:8081'],
+    origin: allowedOrigins,
     credentials: true,
   });
 
@@ -23,6 +30,6 @@ async function bootstrap() {
 
   const port = process.env.PORT || 4000;
   await app.listen(port);
-  console.log(` Norvex backend running on http://localhost:${port}`);
+  console.log(`Norvex backend running on port ${port}`);
 }
 bootstrap();
