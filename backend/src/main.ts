@@ -1,10 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import express from 'express';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/all-exceptions.filter';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+const server = express();
+let app: any;
+
+async function createApp() {
+  if (app) return app;
+
+  app = await NestFactory.create(AppModule, new ExpressAdapter(server));
 
   const allowedOrigins = [
     'http://localhost:3000',
@@ -28,8 +35,21 @@ async function bootstrap() {
 
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  const port = process.env.PORT || 4000;
-  await app.listen(port);
-  console.log(`Norvex backend running on port ${port}`);
+  await app.init();
+  return app;
 }
-bootstrap();
+
+// Local development
+if (!process.env.VERCEL) {
+  createApp().then(async (a) => {
+    const port = process.env.PORT || 4000;
+    await a.listen(port);
+    console.log(`Norvex backend running on port ${port}`);
+  });
+}
+
+// Vercel serverless handler
+export default async function handler(req: any, res: any) {
+  await createApp();
+  return server(req, res);
+}
